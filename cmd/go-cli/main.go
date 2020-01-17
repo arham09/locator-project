@@ -90,7 +90,7 @@ func main() {
 
 							name := c.Args().First()
 
-							handler.AddHandler(&name)
+							handler.AddHandler(name)
 
 							fmt.Println("new Project:", c.Args().First())
 							return nil

@@ -1,13 +1,11 @@
 package handler
 
 import (
-	"bufio"
 	"fmt"
 	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"strings"
 
 	"go-cli/internal/model"
 )
@@ -28,7 +26,7 @@ func ReadHandler() {
 	model.AllProjects()
 }
 
-func AddHandler(text *string) {
+func AddHandler(text string) {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		log.Fatal(err)
