@@ -57,25 +57,34 @@ func main() {
 				},
 			},
 			{
-				Name:    "template",
-				Aliases: []string{"t"},
-				Usage:   "options for task templates",
+				Name:    "project",
+				Aliases: []string{"p"},
+				Usage:   "options for task Project",
 				Subcommands: []*cli.Command{
 					{
 						Name:  "add",
-						Usage: "add a new template",
+						Usage: "add a new Project",
 						Action: func(c *cli.Context) error {
 							fmt.Println(c.Args().First())
-							fmt.Println("new task template:", c.Args().First())
+							fmt.Println("new Project:", c.Args().First())
+							return nil
+						},
+					},
+					{
+						Name:  "list",
+						Usage: "See Project list",
+						Action: func(c *cli.Context) error {
+							fmt.Println(c.Args().First())
+							fmt.Println("new Project:", c.Args().First())
 							return nil
 						},
 					},
 					{
 						Name:  "remove",
-						Usage: "remove an existing template",
+						Usage: "remove an existing Project",
 						Action: func(c *cli.Context) error {
 							fmt.Println(c.Args().First())
-							fmt.Println("removed task template:", c.Args().First())
+							fmt.Println("removed Project:", c.Args().First())
 							return nil
 						},
 					},
