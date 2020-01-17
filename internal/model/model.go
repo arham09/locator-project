@@ -28,7 +28,7 @@ func AllProjects() {
 	}
 
 	for i, project := range projects {
-		fmt.Println(i+1, project.Name)
+		fmt.Println(i+1, project.Name, project.Path)
 	}
 }
 
@@ -55,6 +55,6 @@ func InitialMigration() {
 	}
 	defer db.Close()
 	fmt.Println("done")
-	// Migrate the schema
+
 	db.AutoMigrate(&Project{})
 }
