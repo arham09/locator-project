@@ -23,6 +23,10 @@ func AllProjects() {
 	var projects []Project
 	db.Find(&projects)
 
+	if len(projects) == 0 {
+		fmt.Println("There is no project saved")
+	}
+
 	for i, project := range projects {
 		fmt.Println(i+1, project.Name)
 	}

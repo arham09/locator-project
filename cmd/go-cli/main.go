@@ -7,6 +7,7 @@ import (
 
 	cli "github.com/urfave/cli/v2"
 
+	"go-cli/internal/handler"
 	"go-cli/internal/model"
 )
 
@@ -74,10 +75,23 @@ func main() {
 				Usage:   "options for task Project",
 				Subcommands: []*cli.Command{
 					{
+						Name:  "open",
+						Usage: "open a Listed Project",
+						Action: func(c *cli.Context) error {
+							handler.OpenHandler()
+							return nil
+						},
+					},
+					{
 						Name:  "add",
 						Usage: "add a new Project",
 						Action: func(c *cli.Context) error {
 							fmt.Println(c.Args().First())
+
+							name := c.Args().First()
+
+							handler.AddHandler(&name)
+
 							fmt.Println("new Project:", c.Args().First())
 							return nil
 						},
@@ -87,7 +101,7 @@ func main() {
 						Usage: "See Project list",
 						Action: func(c *cli.Context) error {
 							fmt.Println(c.Args().First())
-							fmt.Println("new Project:", c.Args().First())
+							handler.ReadHandler()
 							return nil
 						},
 					},
