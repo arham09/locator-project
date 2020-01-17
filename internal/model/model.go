@@ -7,12 +7,14 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
+// Project Model for the orm
 type Project struct {
 	gorm.Model
 	Name string
 	Path string
 }
 
+// AllProjects - To get all the data stored in the db
 func AllProjects() {
 	db, err := gorm.Open("sqlite3", "project.db")
 	if err != nil {
@@ -32,6 +34,7 @@ func AllProjects() {
 	}
 }
 
+// AddProject - To Add data to the database
 func AddProject(name *string, path *string) {
 	db, err := gorm.Open("sqlite3", "project.db")
 	if err != nil {
@@ -47,6 +50,7 @@ func AddProject(name *string, path *string) {
 // 	return Project
 // }
 
+// InitialMigration - To initialize migration
 func InitialMigration() {
 	db, err := gorm.Open("sqlite3", "project.db")
 	if err != nil {
