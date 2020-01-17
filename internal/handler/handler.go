@@ -10,9 +10,11 @@ import (
 	"go-cli/internal/model"
 )
 
-func OpenHandler() {
-	cmd := exec.Command("bash", "-c", "code .")       // or whatever the program is
-	cmd.Dir = "/home/arham/Documents/Project/golang/" // or whatever directory it's in
+func OpenHandler(name string) {
+	project := model.GetProjects(&name)
+
+	cmd := exec.Command("bash", "-c", "code .") // or whatever the program is
+	cmd.Dir = project.Path                      // or whatever directory it's in
 	out, err := cmd.Output()
 	if err != nil {
 		log.Fatal("error", err)
@@ -20,6 +22,13 @@ func OpenHandler() {
 		fmt.Printf("%s", out)
 	}
 	fmt.Println("Opening Project")
+}
+
+func GetHandler(name string) {
+	project := model.GetProjects(&name)
+
+	fmt.Println(project.Name)
+	fmt.Println(project.Path)
 }
 
 func ReadHandler() {

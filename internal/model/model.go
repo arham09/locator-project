@@ -46,9 +46,25 @@ func AddProject(name *string, path *string) {
 	fmt.Println("Data successfully inserted")
 }
 
-// func GetProjects(name *string) Project {
-// 	return Project
-// }
+func GetProjects(name *string) *Project {
+	project := &Project{}
+
+	query := fmt.Sprintf("%%%s%%", *name)
+
+	fmt.Println(query)
+
+	db, err := gorm.Open("sqlite3", "project.db")
+	if err != nil {
+		panic("failed to connect database")
+	}
+	defer db.Close()
+
+	db.Where("name LIKE ?", query).First(project)
+
+	fmt.Println(project)
+
+	return project
+}
 
 // InitialMigration - To initialize migration
 func InitialMigration() {

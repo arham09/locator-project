@@ -50,26 +50,6 @@ func main() {
 				},
 			},
 			{
-				Name:    "add",
-				Aliases: []string{"a"},
-				Usage:   "add a task to the list",
-				Action: func(c *cli.Context) error {
-					fmt.Println(c.Args().First())
-					fmt.Println("added task:", c.Args().First())
-					return nil
-				},
-			},
-			{
-				Name:    "complete",
-				Aliases: []string{"c"},
-				Usage:   "complete a task on the list",
-				Action: func(c *cli.Context) error {
-					fmt.Println(c.Args().First())
-					fmt.Println("completed task:", c.Args().First())
-					return nil
-				},
-			},
-			{
 				Name:    "project",
 				Aliases: []string{"p"},
 				Usage:   "options for task Project",
@@ -78,7 +58,7 @@ func main() {
 						Name:  "open",
 						Usage: "open a Listed Project",
 						Action: func(c *cli.Context) error {
-							handler.OpenHandler()
+							handler.GetHandler(c.Args().First())
 							return nil
 						},
 					},
