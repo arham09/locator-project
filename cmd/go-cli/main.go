@@ -6,6 +6,8 @@ import (
 	"os"
 
 	cli "github.com/urfave/cli/v2"
+
+	"go-cli/internal/model"
 )
 
 func main() {
@@ -36,6 +38,16 @@ func main() {
 			return nil
 		},
 		Commands: []*cli.Command{
+			{
+				Name:    "migrate",
+				Aliases: []string{"m"},
+				Usage:   "migrate the model db",
+				Action: func(c *cli.Context) error {
+					model.InitialMigration()
+					fmt.Println("Model has been migrated")
+					return nil
+				},
+			},
 			{
 				Name:    "add",
 				Aliases: []string{"a"},
