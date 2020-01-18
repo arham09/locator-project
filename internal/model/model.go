@@ -29,8 +29,8 @@ func AllProjects() {
 		fmt.Println("There is no project saved")
 	}
 
-	for i, project := range projects {
-		fmt.Println(i+1, project.Name, project.Path)
+	for _, project := range projects {
+		fmt.Println(project.Name, project.Path)
 	}
 }
 

@@ -80,7 +80,6 @@ func main() {
 						Name:  "list",
 						Usage: "See Project list",
 						Action: func(c *cli.Context) error {
-							fmt.Println(c.Args().First())
 							handler.ReadHandler()
 							return nil
 						},
