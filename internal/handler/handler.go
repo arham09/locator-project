@@ -11,6 +11,8 @@ import (
 )
 
 func OpenHandler(name string) {
+	fmt.Println("Opening Project")
+
 	project := model.GetProjects(&name)
 
 	cmd := exec.Command("bash", "-c", "code .") // or whatever the program is
@@ -21,7 +23,6 @@ func OpenHandler(name string) {
 	} else {
 		fmt.Printf("%s", out)
 	}
-	fmt.Println("Opening Project")
 }
 
 func GetHandler(name string) {

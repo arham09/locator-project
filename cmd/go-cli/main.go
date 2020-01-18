@@ -26,18 +26,18 @@ func main() {
 				Destination: &language,
 			},
 		},
-		Action: func(c *cli.Context) error {
-			name := "someone"
-			if c.NArg() > 0 {
-				name = c.Args().Get(0)
-			}
-			if language == "spanish" {
-				fmt.Println("Hola", name)
-			} else {
-				fmt.Println("Hello", name)
-			}
-			return nil
-		},
+		// Action: func(c *cli.Context) error {
+		// 	name := "someone"
+		// 	if c.NArg() > 0 {
+		// 		name = c.Args().Get(0)
+		// 	}
+		// 	if language == "spanish" {
+		// 		fmt.Println("Hola", name)
+		// 	} else {
+		// 		fmt.Println("Hello", name)
+		// 	}
+		// 	return nil
+		// },
 		Commands: []*cli.Command{
 			{
 				Name:    "migrate",
@@ -58,7 +58,7 @@ func main() {
 						Name:  "open",
 						Usage: "open a Listed Project",
 						Action: func(c *cli.Context) error {
-							handler.GetHandler(c.Args().First())
+							handler.OpenHandler(c.Args().First())
 							return nil
 						},
 					},
